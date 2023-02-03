@@ -57,17 +57,9 @@ public class Evento {
 		}
 	}
 	
-	/*
 	@Override
 	public String toString() {
-		return "Evento [titolo=" + titolo + ", data=" + data + "]";
-	}
-	*/
-
-	@Override
-	public String toString() {
-		return "Evento [titolo=" + titolo + ", data=" + this.getDataFormat() + ", postiTot=" + postiTot + ", postiPren=" + postiPren
-				+ "]";
+		return this.getDataFormat() + " - " + this.titolo;
 	}
 
 	public String getTitolo() {
@@ -102,18 +94,4 @@ public class Evento {
 	public int getPostiDisp() {
 		return this.postiTot - this.postiPren;
 	}
-	
-	/*
-	 * Vanno inoltre implementati dei metodi public che svolgono le seguenti funzioni:
-		1. prenota : aggiunge uno ai posti prenotati. Se l’evento è già passato o non ha posti
-		disponibili deve sollevare un’eccezione.
-		
-		2. disdici : riduce di uno i posti prenotati. Se l’evento è già passato o non ci sono
-		prenotazioni deve sollevare un’eccezione.
-		
-		3. l’override del metodo toString() in modo che venga restituita una stringa
-		contenente: data formattata - titolo
-
-	 */
-	
 }

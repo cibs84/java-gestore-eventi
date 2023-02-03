@@ -36,18 +36,25 @@ public class Evento {
 		}
 	}
 	
-	public void prenota() throws PostiDispException, DateException {
+	public void prenota(int postiDaPren) throws PostiDispException, DateException {
 		validateDate(this.data, "L'evento è gia passato!");
-		if (this.postiTot < this.postiPren+1) {
+		if (this.postiTot < this.postiPren + postiDaPren) {
 			throw new PostiDispException();
 		}
-		this.postiPren++;
+		this.postiPren += postiDaPren;
 	}
 	
-	public void disdici() throws DateException, PostiDispException, PostiTotPrenException {
+	public void disdici(int postiDaDis) 
+			throws DateException, PostiDispException, PostiTotPrenException, PostiDaDisException {
 		validateDate(this.data, "L'evento è gia passato!");
 		validatePostiTotPren(this.postiPren, "Non ci sono prenotazioni da disdire!");
-		this.postiPren--;
+		if (postiDaDis > this.postiPren) {
+			int postiDisEccedenti = postiDaDis - this.postiPren;
+			this.postiPren = 0;
+			throw new PostiDaDisException(postiDisEccedenti);
+		} else {
+			this.postiPren -= postiDaDis;
+		}
 	}
 	
 	/*
@@ -89,7 +96,11 @@ public class Evento {
 	}
 
 	public int getPostiPren() {
-		return postiPren;
+		return this.postiPren;
+	}
+	
+	public int getPostiDisp() {
+		return this.postiTot - this.postiPren;
 	}
 	
 	/*

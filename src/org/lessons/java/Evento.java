@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class Evento {
+public class Evento implements Comparable<Evento> {
 	private String titolo;
 	private LocalDate data;
 	private int postiTot;
@@ -62,6 +62,11 @@ public class Evento {
 		return this.getDataFormat() + " - " + this.titolo;
 	}
 
+	@Override
+    public int compareTo(Evento evento) {
+        return getData().compareTo(evento.getData());
+    }
+	
 	public String getTitolo() {
 		return titolo;
 	}

@@ -76,7 +76,7 @@ public class Evento implements Comparable<Evento> {
 	}
 
 	public LocalDate getData() {
-		return data;
+		return this.data;
 	}
 	
 	public void setData(LocalDate data) {

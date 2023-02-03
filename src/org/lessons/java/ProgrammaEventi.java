@@ -1,6 +1,7 @@
 package org.lessons.java;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,10 +19,10 @@ public class ProgrammaEventi {
 		this.eventi.add(evento);
 	}
 	
-	public List<Evento> getListaEventiPerData(LocalDate data) {
+	public List<Evento> getListaEventiPerData(String data) {
 		List<Evento> eventDatedList = new ArrayList<>();
 		for (Evento evento : this.eventi) {
-			if (evento.getData() == data) {
+			if (evento.getData().equals(LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy")))) {
 				eventDatedList.add(evento);
 			}
 		}
@@ -41,7 +42,16 @@ public class ProgrammaEventi {
 		String programmaEventi = this.titolo + "\n";
 		
 		for (Evento evento : this.eventi) {
-			programmaEventi += evento.getData() + " - " + evento.getTitolo() + "\n";
+			programmaEventi += evento.getDataFormat() + " - " + evento.getTitolo() + "\n";
+		}
+		return programmaEventi;
+	}
+	public String toStringProgrammaEventi_02() {
+		//Collections.sort(eventi);
+		String programmaEventi = this.titolo + "\n";
+		
+		for (Evento evento : this.eventi) {
+			programmaEventi += evento.getDataFormat() + " - " + evento.getTitolo() + "\n";
 		}
 		return programmaEventi;
 	}

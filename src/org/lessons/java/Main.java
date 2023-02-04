@@ -81,6 +81,7 @@ public class Main {
 						} else {
 							evento.prenota(Integer.parseInt(scan.nextLine()));
 						}
+						inputOk = true;
 						break;
 					//Disdici
 					case 2:
@@ -90,6 +91,7 @@ public class Main {
 						} else {
 							evento.disdici(Integer.parseInt(scan.nextLine()));
 						}
+						inputOk = true;
 						break;
 					}
 				} else {
@@ -123,5 +125,4 @@ public class Main {
 			}
 		}
 	}
-
 }
